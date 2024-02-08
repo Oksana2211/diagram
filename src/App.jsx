@@ -1,95 +1,96 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Chart from "react-apexcharts";
 import Indicators from "./data/data.json";
-
-
-let dataTable = [1, 3, 6];
-
-let data = {
-  series: [
-    {
-      name: "",
-      data: dataTable,
-    },
-  ],
-  options: {
-    chart: {
-      height: 350,
-      type: "line",
-      dropShadow: {
-        enabled: true,
-        color: "#000",
-        top: 18,
-        left: 7,
-        blur: 10,
-        opacity: 0.2,
-      },
-      toolbar: {
-        show: false,
-      },
-    },
-    colors: ["#77B6EA", "#545454"],
-    dataLabels: {
-      enabled: true,
-    },
-    stroke: {
-      curve: "smooth",
-    },
-    title: {
-      text: "Показатели",
-      align: "left",
-    },
-    grid: {
-      borderColor: "#e7e7e7",
-      row: {
-        colors: ["#f3f3f3", "transparent"],
-        opacity: 0.5,
-      },
-    },
-    markers: {
-      size: 1,
-    },
-    xaxis: {
-      categories: ["Текущий день", "Вчера", "Этот день недели"],
-      title: {
-        text: "Период",
-      },
-    },
-    yaxis: {
-      title: {
-        text: "Выручка (руб)",
-      },
-      min: 5,
-      max: 4900000,
-    },
-    legend: {
-      position: "top",
-      horizontalAlign: "right",
-      floating: true,
-      offsetY: -25,
-      offsetX: -5,
-    },
-  },
-};
-
-
-
-function clickRow1() {
-
-  data.series[0].data[0] = Number(Indicators[0].row1);
-  data.series[0].data[1] = Number(Indicators[0].row2);
-  data.series[0].data[2] = Number(Indicators[0].row3);
-
-}
 
 
 function App() {
 
 
+  const [series, setSeries] = useState([])
+  let ArrRow1 = [Number(Indicators[0].row1), Number(Indicators[0].row2), Number(Indicators[0].row3)];
+  let ArrRow2 = [Number(Indicators[1].row4), Number(Indicators[1].row5), Number(Indicators[1].row6)];
+
+
+
+  // function clickRow1() {
+  //   setSeries((prevSeries) => prevSeries = [...ArrRow1]);
+  // }
+
+
+
+  let data = {
+    series: [
+      {
+        name: "",
+        data: series,
+      },
+    ],
+    options: {
+      chart: {
+        height: 350,
+        type: "line",
+        dropShadow: {
+          enabled: true,
+          color: "#000",
+          top: 18,
+          left: 7,
+          blur: 10,
+          opacity: 0.2,
+        },
+        toolbar: {
+          show: false,
+        },
+      },
+      colors: ["#77B6EA", "#545454"],
+      dataLabels: {
+        enabled: true,
+      },
+      stroke: {
+        curve: "smooth",
+      },
+      title: {
+        text: "Показатели",
+        align: "left",
+      },
+      grid: {
+        borderColor: "#e7e7e7",
+        row: {
+          colors: ["#f3f3f3", "transparent"],
+          opacity: 0.5,
+        },
+      },
+      markers: {
+        size: 1,
+      },
+      xaxis: {
+        categories: ["Текущий день", "Вчера", "Этот день недели"],
+        title: {
+          text: "Период",
+        },
+      },
+      yaxis: {
+        title: {
+          text: "Выручка (руб)",
+        },
+        min: 5,
+        max: 4900000,
+      },
+      legend: {
+        position: "top",
+        horizontalAlign: "right",
+        floating: true,
+        offsetY: -25,
+        offsetX: -5,
+      },
+    },
+  };
+
+
+
   return (
     <section>
       <section>
-        <table id='example-table'>
+        <table >
           <thead>
             <tr>
               <th scope="col">Показатель</th>
@@ -98,14 +99,14 @@ function App() {
               <th scope="col">Этот день недели</th>
             </tr>
           </thead>
-          <tbody id="example-table">
-            <tr onClick={clickRow1}>
+          <tbody>
+            <tr key={Indicators[0].id} onClick={() => setSeries((prevSeries) => prevSeries = [...ArrRow1])}>
               <th scope="row">Выручка, руб.</th>
               <td>{Indicators[0].row1}</td>
               <td>{Indicators[0].row2}</td>
               <td>{Indicators[0].row3}</td>
             </tr>
-            <tr>
+            <tr key={Indicators[1].id} onClick={() => setSeries((prevSeries) => prevSeries = [...ArrRow2])} >
               <th scope="row">Наличные</th>
               <td>{Indicators[1].row4}</td>
               <td>{Indicators[1].row5}</td>
@@ -131,7 +132,7 @@ function App() {
             </tr>
           </tbody>
         </table>
-      </section>
+      </section >
       <div>
         <Chart
           options={data.options}
@@ -140,7 +141,7 @@ function App() {
           height={350}
         />
       </div>
-    </section>
+    </section >
 
   );
 }
