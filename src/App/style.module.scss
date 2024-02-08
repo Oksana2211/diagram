@@ -1,0 +1,41 @@
+.table {
+  font-size: 1.2rem;
+}
+
+th {
+  color: rgb(90, 89, 89);
+  background-color: rgb(216, 216, 216);
+  height: 7vh;
+}
+
+.cell1 {
+  text-align: left;
+  padding-left: 3%;
+}
+
+.cell2 {
+  width: 20vw;
+  text-align: center;
+}
+
+td {
+  height: 7vh;
+  text-align: center;
+  color: rgb(90, 89, 89);
+}
+
+.cellblue {
+  background-color: rgb(200, 241, 243);
+}
+
+.cellgreen {
+  background-color: rgb(180, 244, 218);
+}
+
+.cellred {
+  background-color: rgb(254, 211, 211);
+}
+
+.cellgrey {
+  background-color: rgb(220, 220, 220);
+}

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Chart from "react-apexcharts";
 import Indicators from "../data/data.json";
-import style from './App.scss'
+import style from "./style.module.scss"
 
 
 function App() {
 
   const [series, setSeries] = useState([])
+
+
   let ArrRow1 = [Number(Indicators[0].row1), Number(Indicators[0].row2), Number(Indicators[0].row3)];
   let ArrRow2 = [Number(Indicators[1].row4), Number(Indicators[1].row5), Number(Indicators[1].row6)];
   let ArrRow3 = [Number(Indicators[2].row7), Number(Indicators[2].row8), Number(Indicators[2].row9)];
@@ -104,72 +106,72 @@ function App() {
         <table className={style.table}>
           <thead>
             <tr>
-              <th scope="col">Показатель</th>
-              <th scope="col">Текущий день</th>
-              <th scope="col">Вчера</th>
-              <th scope="col">Этот день недели</th>
+              <th className={style.cell1} scope="col">Показатель</th>
+              <th className={style.cell2} scope="col">Текущий день</th>
+              <th className={style.cell2} scope="col">Вчера</th>
+              <th className={style.cell2} scope="col">Этот день недели</th>
             </tr>
           </thead>
           <tbody>
             <tr key={Indicators[0].id} onClick={() => setSeries((prevSeries) => prevSeries = [...ArrRow1])}>
-              <th scope="row">Выручка, руб.</th>
-              <td>{Indicators[0].row1}</td>
-              <td>{Indicators[0].row2}</td>
-              <td>{Indicators[0].row3}</td>
+              <th className={style.cell1} scope="row">Выручка, руб.</th>
+              <td className={style.cellblue}>{Indicators[0].row1}</td>
+              <td className={style.cellgreen}>{Indicators[0].row2}</td>
+              <td className={style.cellred}>{Indicators[0].row3}</td>
             </tr>
             <tr key={Indicators[1].id} onClick={() => setSeries((prevSeries) => prevSeries = [...ArrRow2])} >
-              <th scope="row">Наличные</th>
-              <td>{Indicators[1].row4}</td>
-              <td>{Indicators[1].row5}</td>
-              <td>{Indicators[1].row6}</td>
+              <th className={style.cell1} scope="row">Наличные</th>
+              <td className={style.cellblue} >{Indicators[1].row4}</td>
+              <td className={style.cellgrey}>{Indicators[1].row5}</td>
+              <td className={style.cellgrey}>{Indicators[1].row6}</td>
             </tr>
             <tr key={Indicators[2].id} onClick={() => setSeries((prevSeries) => prevSeries = [...ArrRow3])}>
-              <th scope="row">Безналичный расчет</th>
-              <td>100000</td>
-              <td>100000</td>
-              <td>100000</td>
+              <th className={style.cell1} scope="row">Безналичный расчет</th>
+              <td className={style.cellblue}>{Indicators[2].row7}</td>
+              <td className={style.cellgrey}>{Indicators[2].row8}</td>
+              <td className={style.cellgrey}>{Indicators[2].row9}</td>
             </tr>
             <tr key={Indicators[3].id} onClick={() => setSeries((prevSeries) => prevSeries = [...ArrRow4])}>
-              <th scope="row">Кредитные карты</th>
-              <td>100521</td>
-              <td>100521</td>
-              <td>100521</td>
+              <th className={style.cell1} scope="row">Кредитные карты</th>
+              <td className={style.cellblue}>{Indicators[3].row10}</td>
+              <td className={style.cellgrey}>{Indicators[3].row11}</td>
+              <td className={style.cellgrey}>{Indicators[3].row12}</td>
             </tr>
             <tr key={Indicators[4].id} onClick={() => setSeries((prevSeries) => prevSeries = [...ArrRow5])}>
-              <th scope="row">Средний чек, руб.</th>
-              <td>1300</td>
-              <td>900</td>
-              <td>300</td>
+              <th className={style.cell1} scope="row">Средний чек, руб.</th>
+              <td className={style.cellblue}>{Indicators[4].row13}</td>
+              <td className={style.cellgreen}>{Indicators[4].row14}</td>
+              <td className={style.cellgreen}>{Indicators[4].row15}</td>
             </tr>
             <tr key={Indicators[5].id} onClick={() => setSeries((prevSeries) => prevSeries = [...ArrRow6])}>
-              <th scope="row">Средний гость, руб.</th>
-              <td>1200</td>
-              <td>800</td>
-              <td>800</td>
+              <th className={style.cell1} scope="row">Средний гость, руб.</th>
+              <td className={style.cellblue}>{Indicators[5].row16}</td>
+              <td className={style.cellgreen}>{Indicators[5].row17}</td>
+              <td className={style.cellgreen}>{Indicators[5].row18}</td>
             </tr>
             <tr key={Indicators[6].id} onClick={() => setSeries((prevSeries) => prevSeries = [...ArrRow7])}>
-              <th scope="row">Удаления из чека(после оплаты), руб.</th>
-              <td>1000</td>
-              <td>1100</td>
-              <td>900</td>
+              <th className={style.cell1} scope="row">Удаления из чека(после оплаты), руб.</th>
+              <td className={style.cellblue}>{Indicators[6].row19}</td>
+              <td className={style.cellred}>{Indicators[6].row20}</td>
+              <td className={style.cellgreen}>{Indicators[6].row21}</td>
             </tr>
             <tr key={Indicators[7].id} onClick={() => setSeries((prevSeries) => prevSeries = [...ArrRow8])}>
-              <th scope="row">Удаления из чека(до оплаты), руб.</th>
-              <td>1300</td>
-              <td>1300</td>
-              <td>900</td>
+              <th className={style.cell1} scope="row">Удаления из чека(до оплаты), руб.</th>
+              <td className={style.cellblue}>{Indicators[7].row22}</td>
+              <td className={style.cellgrey}>{Indicators[7].row23}</td>
+              <td className={style.cellgreen}>{Indicators[7].row24}</td>
             </tr>
             <tr key={Indicators[8].id} onClick={() => setSeries((prevSeries) => prevSeries = [...ArrRow9])}>
-              <th scope="row"> Количество чековКоличество гостей</th>
-              <td>34</td>
-              <td>36</td>
-              <td>34</td>
+              <th className={style.cell1} scope="row"> Количество чеков</th>
+              <td className={style.cellblue}>{Indicators[8].row25}</td>
+              <td className={style.cellred}>{Indicators[8].row26}</td>
+              <td className={style.cellgrey}>{Indicators[8].row27}</td>
             </tr>
             <tr key={Indicators[9].id} onClick={() => setSeries((prevSeries) => prevSeries = [...ArrRow10])}>
-              <th scope="row">Количество гостей</th>
-              <td>34</td>
-              <td>36</td>
-              <td>32</td>
+              <th className={style.cell1} scope="row">Количество гостей</th>
+              <td className={style.cellblue}>{Indicators[9].row28}</td>
+              <td className={style.cellred}>{Indicators[9].row29}</td>
+              <td className={style.cellgreen}>{Indicators[9].row30}</td>
             </tr>
           </tbody>
         </table>
