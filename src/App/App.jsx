@@ -8,7 +8,6 @@ function App() {
 
   const [series, setSeries] = useState([])
 
-
   let ArrRow1 = [Number(Indicators[0].row1), Number(Indicators[0].row2), Number(Indicators[0].row3)];
   let ArrRow2 = [Number(Indicators[1].row4), Number(Indicators[1].row5), Number(Indicators[1].row6)];
   let ArrRow3 = [Number(Indicators[2].row7), Number(Indicators[2].row8), Number(Indicators[2].row9)];
@@ -21,7 +20,6 @@ function App() {
   let ArrRow10 = [Number(Indicators[9].row28), Number(Indicators[9].row29), Number(Indicators[9].row30)];
 
 
-
   let data = {
     series: [
       {
@@ -31,7 +29,7 @@ function App() {
     ],
     options: {
       chart: {
-        height: 800,
+        height: 350,
         type: "line",
         dropShadow: {
           enabled: true,
@@ -64,7 +62,7 @@ function App() {
         },
       },
       markers: {
-        size: 0.5,
+        size: 2,
       },
       xaxis: {
         categories: ["Текущий день", "Вчера", "Этот день недели"],
@@ -77,14 +75,14 @@ function App() {
           text: "Выручка (руб)",
         },
         min: 0,
-        max: 4810000,
+        max: 500000,
       },
       legend: {
         position: "top",
         horizontalAlign: "right",
         floating: true,
-        offsetY: -25,
-        offsetX: -5,
+        offsetY: 0,
+        offsetX: 0,
       },
     },
   };
@@ -93,7 +91,7 @@ function App() {
 
   return (
     <section>
-      <div>
+      <div className={style.diagram}>
         <Chart
           options={data.options}
           series={data.series}
@@ -177,10 +175,8 @@ function App() {
         </table>
       </section >
     </section >
-
   );
 }
 
 
 export default App;
-
